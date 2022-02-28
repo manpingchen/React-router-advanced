@@ -36,8 +36,8 @@
 }
 
 .control textarea:focus {
-  background-color: #cbf8f8;
-  outline-color: teal;
+  background-color: #d7d7d7;
+  outline-color: rgb(159, 159, 159);
 }
 
 .actions button {
