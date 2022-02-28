@@ -6,7 +6,7 @@ const QuoteDetail = () => {
   return (
     <section>
       <h1>Quote for {params.quoteId}</h1>
-      <Route path="/quotes/:quoteId/comments">
+      <Route path={`/quotes/:${params.quoteId}/comments`}>
         <Comments />
       </Route>
     </section>
