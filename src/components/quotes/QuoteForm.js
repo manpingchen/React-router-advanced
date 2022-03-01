@@ -27,7 +27,7 @@ const QuoteForm = (props) => {
 
     props.onAddQuote({ author: enteredAuthor, text: enteredText });
   }
-
+ 
   const finishEnteringHandler = () => {
     setIsEntering(false);
     console.log("Click");
