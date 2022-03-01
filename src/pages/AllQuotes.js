@@ -1,16 +1,19 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import QuoteList from "../components/quotes/QuoteList";
-
-const DUMMY_QUOTES = [
-  { id: "q1", author: "Max", text: "Learning is fun" },
-  { id: "q2", author: "Marco", text: "Learning is not fun" },
-];
+import useHttp from "../hooks/use-http";
+import { getAllQuotes } from "../lib/api";
 
 const AllQuotes = () => {
+  const { sendRequest, data } = useHttp(getAllQuotes);
+
+  useEffect(() => {
+    sendRequest();
+  }, [sendRequest]);
+
   return (
     <Fragment>
       <h1>All Quotes</h1>
-      <QuoteList quotes={DUMMY_QUOTES} />
+      {data?.length > 0 && <QuoteList quotes={data} />}
     </Fragment>
   );
 };

@@ -1,18 +1,29 @@
+import { useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { Link, Route, useParams } from "react-router-dom";
 import Comments from "../components/comments/Comments";
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
-
-const DUMMY_QUOTES = [
-  { id: "q1", author: "Max", text: "Learning is fun" },
-  { id: "q2", author: "Marco", text: "Learning is not fun" },
-];
+import LoadingSpinner from "../components/UI/LoadingSpinner";
+import useHttp from "../hooks/use-http";
+import { getSingleQuote } from "../lib/api";
 
 const QuoteDetail = () => {
   const params = useParams();
+  const quoteId = params.quoteId;
   const match = useRouteMatch();
+  const { sendRequest, data: quote, status } = useHttp(getSingleQuote);
 
-  const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId);
+  useEffect(() => {
+    sendRequest(quoteId);
+  }, [sendRequest, quoteId]);
+
+  if (status === "pending") {
+    return (
+      <div className="centered">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   if (!quote) {
     return <p>No quote found</p>;
@@ -20,7 +31,7 @@ const QuoteDetail = () => {
 
   return (
     <section>
-      <h1>Quote for {params.quoteId}</h1>
+      <h1>Quote for {quoteId}</h1>
       <HighlightedQuote text={quote.text} author={quote.author} />
       <Route path={match.path} exact>
         <div className="centered">
