@@ -58,6 +58,12 @@ body {
   color: white;
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+  background-color: #bbb;
+  border-color: #ccc;
+}
+
 h1 {
   text-align: center;
   margin: 4rem 0;
