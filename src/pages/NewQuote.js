@@ -1,11 +1,11 @@
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import QuoteForm from "../components/quotes/QuoteForm";
 import { addNewQuote } from "../lib/api";
 import useHttp from "../hooks/use-http";
 import { useEffect } from "react";
 
 const NewQuote = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { sendRequest, status } = useHttp(addNewQuote);
 
   const addQuoteHandler = async (newQuote) => {
@@ -14,9 +14,9 @@ const NewQuote = () => {
 
   useEffect(() => {
     if (status === "completed") {
-      history.push("/quotes"); // history.push enable users to go back to the page by clicking back button on browser
+      navigate("/quotes"); 
     }
-  }, [status, history]);
+  }, [status, navigate]);
   
   return <QuoteForm onAddQuote={addQuoteHandler} />;
 };

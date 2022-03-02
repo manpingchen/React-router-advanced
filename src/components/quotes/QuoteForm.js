@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from "react";
 
-import { Prompt } from "react-router-dom";
+// import { Prompt } from "react-router-dom";
 
 import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
@@ -10,7 +10,7 @@ const QuoteForm = (props) => {
   const authorInputRef = useRef();
   const textInputRef = useRef();
 
-  const [isEntering, setIsEntering] = useState(false);
+  // const [isEntering, setIsEntering] = useState(false);
   const [isFormReady, setIsFormReady] = useState(false);
 
   const formChangeHandler = () => {
@@ -29,23 +29,23 @@ const QuoteForm = (props) => {
   }
  
   const finishEnteringHandler = () => {
-    setIsEntering(false);
+    // setIsEntering(false);
     console.log("Click");
   };
 
-  const formFocusedHandler = () => {
-    setIsEntering(true);
-  };
+  // const formFocusedHandler = () => {
+  //   setIsEntering(true);
+  // };
 
   return (
     <Fragment>
-      <Prompt
+      {/* <Prompt
         when={isEntering}
         message={(location) => "Are you sure you want to leave? The entered messages will be lost."}
-      />
+      /> */}
       <Card>
         <form
-          onFocus={formFocusedHandler}
+          // onFocus={formFocusedHandler}
           onChange={formChangeHandler}
           className={classes.form}
           onSubmit={submitFormHandler}
