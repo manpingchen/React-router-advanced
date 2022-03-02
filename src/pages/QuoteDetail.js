@@ -9,9 +9,9 @@ import { getSingleQuote } from "../lib/api";
 
 const QuoteDetail = () => {
   const params = useParams();
-  const quoteId = params.quoteId;
   const match = useRouteMatch();
-  const { sendRequest, data: quote, status } = useHttp(getSingleQuote);
+  const { quoteId } = params;
+  const { sendRequest, data: quote, status, error } = useHttp(getSingleQuote, true);
 
   useEffect(() => {
     sendRequest(quoteId);
@@ -25,8 +25,12 @@ const QuoteDetail = () => {
     );
   }
 
-  if (!quote) {
+  if (status === "completed" && !quote.text) {
     return <p>No quote found</p>;
+  }
+
+  if (error) {
+    return <p className="centered">{error}</p>;
   }
 
   return (
