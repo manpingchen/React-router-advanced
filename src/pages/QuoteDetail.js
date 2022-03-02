@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { Link, useParams, Routes, Route } from "react-router-dom";
-import Comments from "../components/comments/Comments";
+import { Link, Outlet, useParams,  } from "react-router-dom";
+// import Comments from "../components/comments/Comments";
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import useHttp from "../hooks/use-http";
@@ -39,9 +39,7 @@ const QuoteDetail = () => {
           Load Comments
         </Link>
       </div>
-      <Routes>
-        <Route path="comments" element={<Comments />} />
-      </Routes>
+      <Outlet />
     </section>
   );
 };
