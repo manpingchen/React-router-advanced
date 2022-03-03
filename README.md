@@ -1,6 +1,7 @@
 # React Router Advanced
 ## Summary
 This is a React SPA web app implementing React Router, React Lazy Loading and REST APIs integration from Firebase.
+https://react-practice-e3306.firebaseapp.com/quotes
 
 ## Features included
 #### React Router v6 (Upgrading from v5)
